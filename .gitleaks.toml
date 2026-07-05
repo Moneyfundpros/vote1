@@ -1,0 +1,7 @@
+# Gitleaks config. Extends the default ruleset; allowlists the env template only.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow the env template (placeholders only)"
+paths = ['''\.env\.example$''']

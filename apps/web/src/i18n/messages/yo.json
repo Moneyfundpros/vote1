@@ -1,0 +1,47 @@
+{
+  "app": {
+    "name": "Voter",
+    "tagline": "Your voice. Verified. Counted once."
+  },
+  "nav": {
+    "polls": "Polls",
+    "candidates": "Candidates",
+    "results": "Results",
+    "transparency": "Transparency",
+    "account": "Account"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "register": "Create account",
+    "phonePrompt": "Enter your phone number to receive a one-time code",
+    "otpPrompt": "Enter the 6-digit code we sent you"
+  },
+  "kyc": {
+    "title": "Verify your identity",
+    "consent": "I consent to my NIN/BVN being used solely to confirm I am one real person, so each verified person votes once.",
+    "verified": "Verified",
+    "pending": "Verification in progress",
+    "rejected": "Verification could not be completed"
+  },
+  "vote": {
+    "cast": "Cast your vote",
+    "already": "You have already voted in this poll",
+    "receipt": "Your vote was recorded. Keep your receipt to verify it was counted.",
+    "secrecy": "Your receipt proves you voted without revealing your choice."
+  },
+  "results": {
+    "live": "Live results",
+    "total": "Total votes",
+    "certified": "Certified result"
+  },
+  "transparency": {
+    "methodology": "One verified human, one vote. Results are recomputable from a signed export and anchored in a tamper-evident audit log.",
+    "verifyReceipt": "Verify a receipt",
+    "verifyExport": "Verify an export checksum"
+  },
+  "privacy": {
+    "exportData": "Download my data",
+    "deleteAccount": "Delete my account",
+    "withdrawConsent": "Withdraw analytics consent"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@voter/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./validation": "./src/validation/index.ts",
+    "./services": "./src/services/index.ts",
+    "./errors": "./src/errors.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@voter/db": "workspace:*",
+    "@voter/kyc": "workspace:*",
+    "@voter/redis": "workspace:*",
+    "@voter/security": "workspace:*",
+    "@voter/queue": "workspace:*",
+    "@neondatabase/serverless": "^0.10.0",
+    "drizzle-orm": "^0.36.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "vitest": "^2.1.0"
+  }
+}

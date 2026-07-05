@@ -1,0 +1,83 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env", "tsconfig.base.json"],
+  "globalEnv": [
+    "NODE_ENV",
+    "DATABASE_URL",
+    "DATABASE_URL_DIRECT",
+    "DATABASE_URL_REPLICA",
+    "UPSTASH_REDIS_REST_URL",
+    "UPSTASH_REDIS_REST_TOKEN",
+    "QSTASH_TOKEN",
+    "QSTASH_CURRENT_SIGNING_KEY",
+    "QSTASH_NEXT_SIGNING_KEY",
+    "B2_S3_ENDPOINT",
+    "B2_REGION",
+    "B2_KEY_ID",
+    "B2_APP_KEY",
+    "B2_DOWNLOAD_KEY_ID",
+    "B2_DOWNLOAD_KEY",
+    "RESEND_API_KEY",
+    "BREVO_API_KEY",
+    "KYC_PROVIDER_PRIMARY",
+    "KYC_PROVIDER_FALLBACK",
+    "DOJAH_APP_ID",
+    "DOJAH_API_KEY",
+    "DOJAH_WEBHOOK_SECRET",
+    "SMILEID_PARTNER_ID",
+    "SMILEID_API_KEY",
+    "KMS_PROVIDER",
+    "KMS_DEDUP_KEY_ID",
+    "KMS_PHONE_KEY_ID",
+    "KMS_RECEIPT_KEY_ID",
+    "KMS_RISK_KEY_ID",
+    "PEPPER_KEY_VERSION",
+    "AUTH_SECRET",
+    "AUTH_URL",
+    "CLOUDFLARE_TURNSTILE_SECRET",
+    "SSE_WORKER_URL",
+    "WORKER_SHARED_SECRET",
+    "REALTIME_PROVIDER",
+    "ABLY_API_KEY"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "generate": {
+      "cache": false
+    },
+    "migrate": {
+      "cache": false
+    },
+    "push": {
+      "cache": false
+    },
+    "studio": {
+      "cache": false,
+      "persistent": true
+    },
+    "seed": {
+      "cache": false
+    }
+  }
+}

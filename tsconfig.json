@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "files": [],
+  "references": [
+    { "path": "./packages/db" },
+    { "path": "./packages/core" },
+    { "path": "./packages/redis" },
+    { "path": "./packages/queue" },
+    { "path": "./packages/storage" },
+    { "path": "./packages/email" },
+    { "path": "./packages/kyc" },
+    { "path": "./packages/security" },
+    { "path": "./apps/worker" }
+  ]
+}

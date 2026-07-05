@@ -1,0 +1,43 @@
+{
+  "name": "voter",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Nigerian Public-Opinion Voting Platform — monorepo",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "db:generate": "pnpm --filter @voter/db generate",
+    "db:migrate": "pnpm --filter @voter/db migrate",
+    "db:push": "pnpm --filter @voter/db push",
+    "db:studio": "pnpm --filter @voter/db studio",
+    "db:seed": "pnpm --filter @voter/db seed",
+    "prepare": "husky || true"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@types/node": "^20.14.0",
+    "eslint": "^9.12.0",
+    "husky": "^9.1.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.3.0",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "turbo": "^2.1.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.8.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": ["prettier --write"],
+    "*.{json,md}": ["prettier --write"]
+  }
+}
