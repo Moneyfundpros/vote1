@@ -25,7 +25,7 @@ export default function PollsPage() {
         </div>
       </div>
       <div style={{ marginTop: 20 }}>
-        <Link href="/dashboard" className="btn btn-primary">
+        <Link href="/vote" className="btn btn-primary">
           Go to ballot
         </Link>
       </div>
