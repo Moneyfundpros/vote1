@@ -1,19 +1,19 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
 /**
- * Edge middleware (M11): per-request nonce CSP + security headers on every response.
+ * Edge middleware: security headers + a Content-Security-Policy on every response.
  *
- * Next.js injects inline bootstrap/hydration scripts, so a strict `script-src 'self'` breaks the app.
- * We generate a per-request nonce and use `'nonce-…' 'strict-dynamic'`; Next reads the nonce from the
- * request's Content-Security-Policy header and stamps it onto its scripts. In dev, `'unsafe-eval'` is
- * additionally required for Fast Refresh/HMR.
+ * NOTE: This app statically pre-renders its pages, so a per-request nonce cannot be
+ * stamped onto the already-baked script tags — a nonce + `strict-dynamic` policy would
+ * block Next.js's own bundles and prevent React from hydrating (breaking every button).
+ * We therefore use a static policy that allows the app's own (self + inline) scripts.
  */
-function buildCsp(nonce: string): string {
+function buildCsp(): string {
   const dev = process.env.NODE_ENV !== 'production';
   const streamBase = process.env.NEXT_PUBLIC_STREAM_BASE ?? '';
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${dev ? " 'unsafe-eval'" : ''}`,
+    `script-src 'self' 'unsafe-inline'${dev ? " 'unsafe-eval'" : ''}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https:",
     `connect-src 'self' ${streamBase} ${dev ? 'ws: http://localhost:*' : 'https:'}`.trim(),
@@ -34,19 +34,9 @@ const STATIC_HEADERS: Record<string, string> = {
   'Cross-Origin-Opener-Policy': 'same-origin',
 };
 
-export function middleware(req: NextRequest): NextResponse {
-  const bytes = new Uint8Array(16);
-  crypto.getRandomValues(bytes);
-  const nonce = btoa(String.fromCharCode(...bytes));
-  const csp = buildCsp(nonce);
-
-  // Pass the nonce + CSP to Next via request headers so it stamps its scripts.
-  const requestHeaders = new Headers(req.headers);
-  requestHeaders.set('x-nonce', nonce);
-  requestHeaders.set('Content-Security-Policy', csp);
-
-  const res = NextResponse.next({ request: { headers: requestHeaders } });
-  res.headers.set('Content-Security-Policy', csp);
+export function middleware(_req: NextRequest): NextResponse {
+  const res = NextResponse.next();
+  res.headers.set('Content-Security-Policy', buildCsp());
   for (const [k, v] of Object.entries(STATIC_HEADERS)) res.headers.set(k, v);
   return res;
 }

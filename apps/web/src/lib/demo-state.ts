@@ -222,6 +222,10 @@ export function addActivity(label: string, detail: string) {
   writeStorage(ACTIVITY_KEY, next);
 }
 
+export function clearActivity() {
+  writeStorage(ACTIVITY_KEY, [] as ActivityEntry[]);
+}
+
 /* ---------- Formatting helpers ---------- */
 export function formatNumber(n: number): string {
   return n.toLocaleString('en-US');
