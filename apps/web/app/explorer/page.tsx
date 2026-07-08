@@ -11,9 +11,9 @@ export default function ExplorerPage() {
       <div className="card" style={{ marginTop: 24, padding: 24 }}>
         <div style={{ display: 'grid', gap: 12 }}>
           {[
-            ['Ada Okafor', '82'],
-            ['Tunde Bello', '64'],
-            ['Mina Yusuf', '41'],
+            ['Ahmed Ibrahim', '8,234,562'],
+            ['Grace Adewale', '5,795,201'],
+            ['Daniel Okoro', '2,764,194'],
           ].map(([name, votes]) => (
             <div key={name} className="card" style={{ padding: 16, display: 'flex', justifyContent: 'space-between' }}>
               <strong>{name}</strong>
@@ -23,8 +23,8 @@ export default function ExplorerPage() {
         </div>
       </div>
       <div style={{ marginTop: 20 }}>
-        <Link href="/dashboard" className="btn btn-primary">
-          Open voting flow
+        <Link href="/results" className="btn btn-primary">
+          View full results
         </Link>
       </div>
     </main>

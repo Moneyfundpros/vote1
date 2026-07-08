@@ -11,9 +11,10 @@ export default function CandidatesPage() {
       <div className="card" style={{ marginTop: 24, padding: 24 }}>
         <div style={{ display: 'grid', gap: 12 }}>
           {[
-            ['Ada Okafor', 'People First', 'Community-led reform'],
-            ['Tunde Bello', 'Progressive Alliance', 'Education and jobs'],
-            ['Mina Yusuf', 'Civic Future', 'Transparency and youth growth'],
+            ['Ahmed Ibrahim', 'Unity Party', 'Jobs, security and national unity'],
+            ['Grace Adewale', 'Progress Party', 'Education, health and reform'],
+            ['Daniel Okoro', 'People First Party', 'Grassroots development'],
+            ['Theophilus Musa', 'Visionary Party', 'Technology and youth growth'],
           ].map(([name, party, blurb]) => (
             <div key={name} className="card" style={{ padding: 16 }}>
               <strong>{name}</strong>
@@ -24,7 +25,7 @@ export default function CandidatesPage() {
         </div>
       </div>
       <div style={{ marginTop: 20 }}>
-        <Link href="/dashboard" className="btn btn-primary">
+        <Link href="/vote" className="btn btn-primary">
           View ballot
         </Link>
       </div>
